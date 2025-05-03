@@ -10,19 +10,15 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Edit3, Sprout } from "lucide-react";
+import { Edit3 } from "lucide-react";
 import { Combobox } from "./ui/combo-box";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
-import {
-  createPlant,
-  getPlantById,
-  getPlants,
-  updatePlant,
-} from "../../actions/plant.actions";
+import { getPlantById, updatePlant } from "../../actions/plant.actions";
 import toast from "react-hot-toast";
+import ImageUpload from "./ImageUpload";
 
 type Plant = NonNullable<Awaited<ReturnType<typeof getPlantById>>>;
 
@@ -56,16 +52,6 @@ export function EditDialog({ plant }: EditDialogProps) {
       console.error("Error editing plant:", error);
       toast.error("Failed to edit plant. Please try again.");
     }
-    // Reset form data after submission
-    // setFormData({
-    //   name: "",
-    //   category: "",
-    //   description: "",
-    //   stock: 1,
-    //   userId: "",
-    //   price: 1,
-    //   imageUrl: "",
-    // });
   };
   return (
     <AlertDialog>
@@ -135,13 +121,13 @@ export function EditDialog({ plant }: EditDialogProps) {
 
           {/*Image Upload*/}
           <div className="py-5">
-            {/* <ImageUpload
+            <ImageUpload
               endpoint="postImage"
               value={formData.imageUrl}
               onChange={(url) => {
                 handleChange("imageUrl", url);
               }}
-            /> */}
+            />
           </div>
 
           <AlertDialogFooter>

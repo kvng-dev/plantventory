@@ -1,5 +1,5 @@
 import { OurFileRouter } from "@/app/api/uploadthing/core";
-import { UploadButton, UploadDropzone } from "@uploadthing/react";
+import { UploadDropzone } from "@uploadthing/react";
 import { XIcon } from "lucide-react";
 import React from "react";
 

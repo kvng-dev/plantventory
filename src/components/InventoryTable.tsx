@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Edit, Search, Trash } from "lucide-react";
+import { Search } from "lucide-react";
 import { Input } from "./ui/input";
 import { Combobox } from "./ui/combo-box";
 import { useState } from "react";
@@ -17,55 +17,6 @@ import TableSkeleton from "./TableSkeleton";
 import { CreateDialog } from "./CreateDialog";
 import { EditDialog } from "./EditDialog";
 import DeleteDialog from "./DeleteDialog";
-
-const plantsObj = [
-  {
-    id: 1,
-    name: "Aloe Vera",
-    category: "Succulent",
-    price: "$5.99",
-    stock: 25,
-  },
-  { id: 2, name: "Snake Plant", category: "Indoor", price: "$7.49", stock: 18 },
-  {
-    id: 3,
-    name: "Peace Lily",
-    category: "Flowering",
-    price: "$8.99",
-    stock: 12,
-  },
-  {
-    id: 4,
-    name: "Spider Plant",
-    category: "Hanging",
-    price: "$6.25",
-    stock: 20,
-  },
-  {
-    id: 5,
-    name: "Fiddle Leaf Fig",
-    category: "Tree",
-    price: "$14.99",
-    stock: 5,
-  },
-  { id: 6, name: "Monstera", category: "Tropical", price: "$13.75", stock: 8 },
-  { id: 7, name: "Bamboo Palm", category: "Palm", price: "$9.50", stock: 16 },
-  {
-    id: 8,
-    name: "Jade Plant",
-    category: "Succulent",
-    price: "$4.95",
-    stock: 30,
-  },
-  {
-    id: 9,
-    name: "ZZ Plant",
-    category: "Low Light",
-    price: "$10.00",
-    stock: 14,
-  },
-  { id: 10, name: "Boston Fern", category: "Fern", price: "$6.80", stock: 22 },
-];
 
 type Plant = Awaited<ReturnType<typeof getPlants>>;
 interface InventoryTableProps {

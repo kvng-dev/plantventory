@@ -5,7 +5,6 @@ import { getPlants } from "../../../actions/plant.actions";
 
 const page = async () => {
   const user = await stackServerApp.getUser();
-  const app = stackServerApp.urls;
   const plant = await getPlants();
   return (
     <>
