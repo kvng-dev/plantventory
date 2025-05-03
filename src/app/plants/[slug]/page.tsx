@@ -3,6 +3,7 @@ import { getPlantById } from "../../../../actions/plant.actions";
 import PlantCard from "./PlantCard";
 import { SignIn } from "@stackframe/stack";
 
+// For generateMetadata, use this type
 export async function generateMetadata({
   params,
 }: {
@@ -16,7 +17,15 @@ export async function generateMetadata({
   };
 }
 
-const Page = async ({ params }: { params: { slug: string } }) => {
+// For the page component, use the correct Next.js types
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams?: Record<string, string | string[] | undefined>;
+}
+
+const Page = async ({ params }: PageProps) => {
   const user = await stackServerApp.getUser();
   if (!user) {
     return <SignIn />;
