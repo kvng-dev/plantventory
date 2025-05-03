@@ -3,25 +3,27 @@ import { getPlantById } from "../../../../actions/plant.actions";
 import PlantCard from "./PlantCard";
 import { SignIn } from "@stackframe/stack";
 
-export async function generateMetadata({
-  params,
-}: {
+type PageProps = {
   params: { slug: string };
-}) {
-  const [id] = params.slug.split("--");
+};
+
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const [id] = slug.split("--");
   const plant = await getPlantById(id);
+
   return {
-    title: plant ? plant.name : "Plant Details",
-    description: plant ? plant.description : "Plant details page",
+    title: plant?.name || "Plant Page",
   };
 }
 
-const page = async ({ params }: { params: { slug: string } }) => {
+const page = async ({ params }: PageProps) => {
   const user = await stackServerApp.getUser();
   if (!user) {
     return <SignIn />;
   }
-  const [id] = params.slug.split("--");
+  const { slug } = await params;
+  const [id] = slug.split("--");
   const plant = await getPlantById(id);
 
   return (
