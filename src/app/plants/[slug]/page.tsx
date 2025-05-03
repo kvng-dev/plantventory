@@ -8,7 +8,7 @@ type PageProps = {
 };
 
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   const [id] = slug.split("--");
   const plant = await getPlantById(id);
 
@@ -22,7 +22,7 @@ const page = async ({ params }: PageProps) => {
   if (!user) {
     return <SignIn />;
   }
-  const { slug } = await params;
+  const { slug } = params;
   const [id] = slug.split("--");
   const plant = await getPlantById(id);
 
