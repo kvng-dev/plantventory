@@ -3,11 +3,12 @@ import { getPlantById } from "../../../../actions/plant.actions";
 import PlantCard from "./PlantCard";
 import { SignIn } from "@stackframe/stack";
 
-type Params = { slug: string };
-
-export async function generateMetadata({ params }: { params: Params }) {
-  const slug = params?.slug ?? "";
-  const [id] = slug.split("--");
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const [id] = params.slug.split("--");
   const plant = await getPlantById(id);
 
   return {
@@ -15,14 +16,13 @@ export async function generateMetadata({ params }: { params: Params }) {
   };
 }
 
-const Page = async ({ params }: { params: Params }) => {
+const Page = async ({ params }: { params: { slug: string } }) => {
   const user = await stackServerApp.getUser();
   if (!user) {
     return <SignIn />;
   }
 
-  const slug = params?.slug ?? "";
-  const [id] = slug.split("--");
+  const [id] = params.slug.split("--");
   const plant = await getPlantById(id);
 
   if (!plant) {
